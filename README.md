@@ -1,5 +1,5 @@
 # BÀI TẬP 09: CẤU HÌNH SPRING SECURITY 6 & CUSTOM LOGIN
-## Môn học: Lập Trình Web (WEBPR330479) - Trường ĐH Sư Phạm Kỹ Thuật TP.HCM (HCMUTE)
+## Môn học: Lập Trình Web (WEBPR330479) - Trường ĐH Công nghệ Kỹ Thuật TP.HCM (HCM-UTE)
 **Giảng viên hướng dẫn:** ThS. Nguyễn Hữu Trung  
 **Sinh viên thực hiện:** Huỳnh Cao Trung Đức  
 **Mã số sinh viên:** 24133012  
