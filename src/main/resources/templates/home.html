@@ -1,26 +1,37 @@
 <!DOCTYPE html>
-<html lang="vi" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<head th:replace="~{layouts/layout :: head('Home - IOTSTAR SHOP')}"></head>
+<html lang="vi"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <title>Trang chủ</title>
+</head>
 <body>
-<header th:replace="~{fragments/header :: header}"></header>
-<main class="container">
-    <div class="panel">
-        <h1>IOTSTAR SHOP - Hệ Thống Quản Lý Bảo Mật</h1>
-        <p>Chào mừng bạn đến với ứng dụng thực hành Spring Security 6!</p>
-        <hr/>
-        <div class="card">
-            <h3>Thông tin người dùng đăng nhập:</h3>
-            <p>Tên tài khoản: <strong sec:authentication="name"></strong></p>
-            <p>Quyền hạn: <strong sec:authentication="principal.authorities"></strong></p>
-        </div>
-        <div style="margin-top: 20px; display: flex; gap: 15px;">
-            <a th:href="@{/vidu1}" class="btn primary">Xem Ví dụ 1 (Không dùng Dialect)</a>
+<main layout:fragment="content">
+    <div class="container">
+        <div class="panel">
+            <h1>Trang chủ UTEShop (Ví dụ 2 - Thymeleaf Layout Dialect)</h1>
+            <p>
+                Xin chào <strong th:text="${#authentication.principal.fullName}">User</strong>!
+            </p>
+            <div class="card" style="margin-top: 20px;">
+                <h3>Thông tin tài khoản xác thực từ Spring Security:</h3>
+                <div style="display: flex; align-items: center; gap: 20px; margin-top: 15px;">
+                    <img th:src="${#authentication.principal.images != null and !#strings.isEmpty(#authentication.principal.images) ? #authentication.principal.images : '/images/avatar-default.png'}"
+                         alt="Avatar" width="80" height="80" style="border-radius: 50%; object-fit: cover; border: 3px solid #2563eb;">
+                    <div>
+                        <p style="margin: 4px 0;"><strong>Họ và tên:</strong> <span th:text="${#authentication.principal.fullName}"></span></p>
+                        <p style="margin: 4px 0;"><strong>Username:</strong> <span th:text="${#authentication.principal.username}"></span></p>
+                        <p style="margin: 4px 0;"><strong>Email:</strong> <span th:text="${#authentication.principal.email}"></span></p>
+                        <p style="margin: 4px 0;"><strong>Vai trò / Quyền:</strong> <span th:text="${#authentication.principal.role}"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top: 20px; display: flex; gap: 15px;">
+                <a th:href="@{/vidu1}" class="btn secondary">Xem Ví dụ 1 (Không dùng Dialect)</a>
+            </div>
         </div>
     </div>
 </main>
-<footer class="footer">
-    Copyright © UTEShop - Huỳnh Cao Trung Đức (24133012)
-</footer>
 </body>
 </html>
