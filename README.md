@@ -108,7 +108,7 @@ Khi ứng dụng khởi động lần đầu, `CommandLineRunner` trong `Springb
 
 | Username | Email | Mật khẩu | Quyền (Role) | Họ và tên | Ảnh đại diện (Avatar) |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `user01` | `user01@gmail.com` | `123456` | `ROLE_USER` | Nguyễn Hữu Trung | `/images/user.png` |
+| `user01` | `user01@gmail.com` | `123456` | `ROLE_USER` | Huỳnh Cao Trung Đức | `/images/user.png` |
 | `admin` | `admin@hcmute.edu.vn` | `123456` | `ROLE_ADMIN` | System Administrator | `/images/admin.png` |
 
 > **Lưu ý:** Bạn có thể đăng nhập bằng **Username** (ví dụ: `user01`) hoặc **Email** (ví dụ: `user01@gmail.com`) với mật khẩu `123456` đều thành công.

@@ -49,7 +49,7 @@ public class Springboot19Application {
                     .username("user01")
                     .email("user01@gmail.com")
                     .password(passwordEncoder.encode("123456"))
-                    .fullName("Nguyễn Hữu Trung")
+                    .fullName("Huỳnh Cao Trung Đức")
                     .images("/images/user.png")
                     .role(userRole)
                     .enabled(true)
