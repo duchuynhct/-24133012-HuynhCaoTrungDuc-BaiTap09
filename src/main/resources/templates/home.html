@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{layouts/layout :: head('Home - IOTSTAR SHOP')}"></head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+<main class="container">
+    <div class="panel">
+        <h1>IOTSTAR SHOP - Hệ Thống Quản Lý Bảo Mật</h1>
+        <p>Chào mừng bạn đến với ứng dụng thực hành Spring Security 6!</p>
+        <hr/>
+        <div class="card">
+            <h3>Thông tin người dùng đăng nhập:</h3>
+            <p>Tên tài khoản: <strong sec:authentication="name"></strong></p>
+            <p>Quyền hạn: <strong sec:authentication="principal.authorities"></strong></p>
+        </div>
+        <div style="margin-top: 20px; display: flex; gap: 15px;">
+            <a th:href="@{/vidu1}" class="btn primary">Xem Ví dụ 1 (Không dùng Dialect)</a>
+        </div>
+    </div>
+</main>
+<footer class="footer">
+    Copyright © UTEShop - Huỳnh Cao Trung Đức (24133012)
+</footer>
+</body>
+</html>

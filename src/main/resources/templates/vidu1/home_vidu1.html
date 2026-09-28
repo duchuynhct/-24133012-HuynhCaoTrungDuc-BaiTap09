@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="vi" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{layouts/layout :: head('Home - Ví dụ 1')}"></head>
+<body>
+<header th:replace="~{fragments/header :: header}"></header>
+<main class="container">
+    <div class="panel">
+        <h1>Ví dụ 1: Custom Login (Layout KHÔNG dùng Dialect)</h1>
+        <p>Giao diện sử dụng cơ chế ghép fragment truyền thống của Thymeleaf (<code>th:replace</code>).</p>
+        <hr/>
+        <div class="card">
+            <h3>Thông tin người dùng đăng nhập:</h3>
+            <p>Tên tài khoản: <strong sec:authentication="name"></strong></p>
+            <p>Vai trò / Quyền: <strong sec:authentication="principal.authorities"></strong></p>
+        </div>
+        <p style="margin-top: 20px;">
+            <a th:href="@{/}" class="btn primary">Chuyển sang Ví dụ 2 (Thymeleaf Layout Dialect + Avatar)</a>
+        </p>
+    </div>
+</main>
+<footer class="footer">
+    Copyright © UTEShop - Huỳnh Cao Trung Đức (24133012)
+</footer>
+</body>
+</html>
