@@ -21,6 +21,7 @@ public class Springboot19Application {
     CommandLineRunner init(
         RoleRepository roleRepository,
         UserRepository userRepository,
+        vn.iotstar.repository.ProductRepository productRepository,
         PasswordEncoder passwordEncoder
     ) {
         return args -> {
@@ -44,8 +45,8 @@ public class Springboot19Application {
                     )
                 );
 
-            if (userRepository.findByUsername("user01").isEmpty()) {
-                User user = User.builder()
+            User user = userRepository.findByUsername("user01").orElseGet(() -> {
+                User u = User.builder()
                     .username("user01")
                     .email("user01@gmail.com")
                     .password(passwordEncoder.encode("123456"))
@@ -54,8 +55,8 @@ public class Springboot19Application {
                     .role(userRole)
                     .enabled(true)
                     .build();
-                userRepository.save(user);
-            }
+                return userRepository.save(u);
+            });
 
             if (userRepository.findByUsername("admin").isEmpty()) {
                 User admin = User.builder()
@@ -68,6 +69,23 @@ public class Springboot19Application {
                     .enabled(true)
                     .build();
                 userRepository.save(admin);
+            }
+
+            if (productRepository.count() == 0) {
+                productRepository.save(vn.iotstar.entity.Product.builder()
+                    .name("Điện thoại Oppo A95")
+                    .description("Điện thoại thông minh Oppo A95 cấu hình cao")
+                    .price(new java.math.BigDecimal("6565656.00"))
+                    .imageUrl("/images/user.png")
+                    .user(user)
+                    .build());
+                productRepository.save(vn.iotstar.entity.Product.builder()
+                    .name("Điện thoại Oppo A6")
+                    .description("Điện thoại Oppo A6 chính hãng")
+                    .price(new java.math.BigDecimal("689990.00"))
+                    .imageUrl("/images/user.png")
+                    .user(user)
+                    .build());
             }
         };
     }

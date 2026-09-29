@@ -1,37 +1,26 @@
 <!DOCTYPE html>
-<html lang="vi"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layouts/layout}">
-<head>
-    <title>Trang chủ</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layouts/layout :: head('Dashboard')}"></head>
 <body>
-<main layout:fragment="content">
-    <div class="container">
-        <div class="panel">
-            <h1>Trang chủ UTEShop (Ví dụ 2 - Thymeleaf Layout Dialect)</h1>
-            <p>
-                Xin chào <span style="font-weight: 700; color: #1e293b;" th:text="${#authentication.principal.fullName}">User</span>!
-            </p>
-            <div class="card" style="margin-top: 20px;">
-                <h3 style="margin-top: 0; color: #1e293b;">Thông tin tài khoản xác thực từ Spring Security:</h3>
-                <div style="display: flex; align-items: center; gap: 24px; margin-top: 15px;">
-                    <img th:src="${#authentication.principal.images != null and !#strings.isEmpty(#authentication.principal.images) ? #authentication.principal.images : '/images/avatar-default.png'}"
-                         alt="Avatar" width="80" height="80" style="border-radius: 50%; object-fit: cover; border: 3px solid #2563eb;">
-                    <div>
-                        <p style="margin: 6px 0; font-size: 15px;"><b style="color: #475569; width: 130px; display: inline-block;">Họ và tên:</b> <span th:text="${#authentication.principal.fullName}" style="font-weight: 600; color: #0f172a;"></span></p>
-                        <p style="margin: 6px 0; font-size: 15px;"><b style="color: #475569; width: 130px; display: inline-block;">Username:</b> <span th:text="${#authentication.principal.username}"></span></p>
-                        <p style="margin: 6px 0; font-size: 15px;"><b style="color: #475569; width: 130px; display: inline-block;">Email:</b> <span th:text="${#authentication.principal.email}"></span></p>
-                        <p style="margin: 6px 0; font-size: 15px;"><b style="color: #475569; width: 130px; display: inline-block;">Vai trò / Quyền:</b> <span th:text="${#authentication.principal.role}" class="btn primary small" style="padding: 2px 8px; font-size: 11px;"></span></p>
-                    </div>
-                </div>
-            </div>
-            <div style="margin-top: 20px; display: flex; gap: 15px;">
-                <a th:href="@{/vidu1}" class="btn secondary">Xem Ví dụ 1 (Không dùng Dialect)</a>
-            </div>
+<div th:replace="~{layouts/layout :: page(~{::main})}">
+<main>
+    <h1>Dashboard</h1>
+    <div th:if="${success}" class="alert success" th:text="${success}"></div>
+    <div class="cards">
+        <div class="card">
+            <h3>Total Users</h3>
+            <strong th:text="${userCount}">0</strong>
+        </div>
+        <div class="card">
+            <h3>Total Products</h3>
+            <strong th:text="${productCount}">0</strong>
         </div>
     </div>
+    <div class="quick-links">
+        <a class="button" th:href="@{/products}">Quản lý Products</a>
+        <a class="button" th:if="${#authorization.expression('hasRole(''ADMIN'')')}" th:href="@{/users}">Quản lý Users</a>
+    </div>
 </main>
+</div>
 </body>
 </html>
